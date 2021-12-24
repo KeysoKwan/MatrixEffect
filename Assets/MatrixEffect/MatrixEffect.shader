@@ -44,7 +44,6 @@
                      return o;
               }
 
-              //---------------------------------------------------------
               float text(float2 coord)
               {
                   float2 uv    = frac (coord.xy/ 16.);                // Geting the fract part of the block, this is the uv map for the blocl
@@ -61,27 +60,26 @@
                   uv.x = -uv.x;
                   return tex2D(_FontTexture, uv).r;
               }
-              //---------------------------------------------------------
 
               float3 rain(float2 fragCoord)
               {
-                     fragCoord.x  = floor(fragCoord.x/ 16.);             // This is the exact replica of the calculation in text function for getting the cell ids. Here we want the id for the columns 
-                     
-                     float offset = sin (fragCoord.x*15.);               // Each drop of rain needs to start at a different point. The column id  plus a sin is used to generate a different offset for each columm
-                     float speed  = cos (fragCoord.x*3.)*.15 + .35;      // Same as above, but for speed. Since we dont want the columns travelling up, we are adding the 0.7. Since the cos *0.3 goes between -0.3 and 0.3 the 0.7 ensures that the speed goes between 0.4 mad 1.0. This is also control parameters for min and max speed
-                     float y      = frac((fragCoord.y / _ScaleX)         // This maps the screen again so that top is 1 and button is 0. The addition with time and frac would cause an entire bar moving from button to top
+                  fragCoord.x  = floor(fragCoord.x/ 16.);             // This is the exact replica of the calculation in text function for getting the cell ids. Here we want the id for the columns 
+
+                  float offset = sin (fragCoord.x*15.);               // Each drop of rain needs to start at a different point. The column id  plus a sin is used to generate a different offset for each columm
+                  float speed  = cos (fragCoord.x*3.)*.15 + .35;      // Same as above, but for speed. Since we dont want the columns travelling up, we are adding the 0.7. Since the cos *0.3 goes between -0.3 and 0.3 the 0.7 ensures that the speed goes between 0.4 mad 1.0. This is also control parameters for min and max speed
+                  float y      = frac((fragCoord.y / _ScaleX)         // This maps the screen again so that top is 1 and button is 0. The addition with time and frac would cause an entire bar moving from button to top
                                           + _Time.y * speed + offset);   // the speed and offset would cause the columns to move down at different speeds. Which causes the rain drop effect
-                     
-                     return float3(.1, 1., .35) / (y*20.);               // adjusting the retun color based on the columns calculations. 
+
+                  return float3(.1, 1., .35) / (y*20.);               // adjusting the retun color based on the columns calculations. 
               }
 
 #define scale 0.6
               fixed4 frag (v2f i) : SV_Target
               {
-                     // sample the texture
-                     fixed4 col     = float4(0.,0.,0.,1.);
-                     col.xyz = text(i.uv * float2(_ScaleX, _ScaleX)*scale)*rain(i.uv * float2(_ScaleX, _ScaleX)*scale);
-                     return col;
+                  // sample the texture
+                  fixed4 col     = float4(0.,0.,0.,1.);
+                  col.xyz = text(i.uv * float2(_ScaleX, _ScaleX)*scale)*rain(i.uv * float2(_ScaleX, _ScaleX)*scale);
+                  return col;
               }
               ENDHLSL
         }
