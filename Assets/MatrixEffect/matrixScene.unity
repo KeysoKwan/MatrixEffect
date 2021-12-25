@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _matrixMaterial: {fileID: 2100000, guid: cc9bc89c45bc30e40924376c6a25d977, type: 2}
+  _matrixSkyMaterial: {fileID: 2100000, guid: 473f41e47e3f5e04ea8f7523b1316bf3, type: 2}
 --- !u!114 &282840816
 MonoBehaviour:
   m_ObjectHideFlags: 0
