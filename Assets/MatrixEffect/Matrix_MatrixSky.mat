@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FontTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 2c44b70487211cf40bbcbe7e376cef77, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontTex:
@@ -50,7 +50,8 @@ Material:
     m_Floats:
     - _Exposure: 1
     - _Rotation: 0
-    - _ScaleX: 1920
-    - _ScaleY: 1080
+    - _Scale: 3840
+    - _ScaleX: 3840
+    - _ScaleY: 0
     m_Colors:
     - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
