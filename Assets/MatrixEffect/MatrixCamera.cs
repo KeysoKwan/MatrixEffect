@@ -18,6 +18,9 @@ public class MatrixCamera : MonoBehaviour
     [SerializeField]
     Material _matrixMaterial;
 
+    [SerializeField]
+    Material _matrixSkyMaterial;
+
     Dictionary<Renderer, Material[]> _meshDic;
 
     Dictionary<Renderer, Material[]> meshDic
@@ -73,7 +76,7 @@ public class MatrixCamera : MonoBehaviour
             }
             item.Key.materials = materials;
         }
-        RenderSettings.skybox = _matrixMaterial;
+        RenderSettings.skybox = _matrixSkyMaterial;
         _inMatrix = true;
     }
 
